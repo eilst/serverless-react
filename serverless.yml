@@ -108,8 +108,10 @@ functions:
           path: notes/{id}
           method: delete
           cors: true
+          authorizer: aws_iam
 # Create our resources with separate CloudFormation templates
 resources:
   # DynamoDB
   - ${file(resources/dynamodb-table.yml)}
-          authorizer: aws_iam
+  # S3
+  - ${file(resources/s3-bucket.yml)}
